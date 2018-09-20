@@ -1,0 +1,16 @@
+Chapter 1
+    #13 A system that does not benefit from concurrency or remote access and have high numbers of edits. These systems include word processing programs and operating systems as there are a large number of dependencies.
+    #14 Major in Student, Course_number and department in Course, Course_number in Section, Course_number and Perequisite_number in Prerequisite.
+    b) In Course, Prerequisite, and Section, Couse_number can be composed of two fields: department_id and number. In Prerequisite, Prerequisite_number can be composed of two fields: department_id and number.
+
+Chapter 2
+    #3 A database schema is a description of how the database is structured, what are the tables and what do the fields hold. A database state is a snapshot of the database consisting of the data in the tables and fields.
+    #7 The use-friendly interfaces are Menu-Based Interfaces for Web Clients or Browsing; allows user to browse contents in an exploratory and unstructured manner, Forms-Based Interfaces; these allow individual users to add records in a structured format, Graphical Use Interfaces; allows user to specify a query by manipulating the diagram, Natural Language Interfaces; allows user to write a request and the database attempts to understand them great for search engines, Speech Input and Output; allows speech as an input query and the result is returned using speech, Interfaces for Parametic Users; used by a select group for repeated similar actions ex. bank teller
+    #14 The Three-Tier Architecture for Web Applications is the best solution for a system to make airline reservations. It allows the user to interact using a GUI and the intermediate layer allows the system use business logic allowing the system to avoid nefarious or ignorant users from disrupting the system.
+
+Chapter 3
+    #2 A relation is a set of tuples. Elements in sets are unordered.
+    #5 A primary key allows each record to have a unique identifier allow for easier access and manipulation
+    #9 A foreign key corresponds to a primary key in another table allowing records in separate tables to be linked together
+    #13 Univ_section# should be a candidate key because each class has a unique section number Room#, Time_period, Weekdays, and Semester could all be combined into a super key, but this is messy and computationally inefficient.
+    #20 Generating surrogate keys is advantageous because it allows a logical relation between every entity dealing with Student_id without requiring an extra foreign key. It disadvantageous in tables that need SSN information because the tables would require and extra field for the student_id in order for other parts of the system to reference records, even though SSN fulfills the requirements of a primary key
