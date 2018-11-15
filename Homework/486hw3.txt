@@ -1,0 +1,32 @@
+mongoDB
+1.  show collections
+2.  db.categories.count()
+3.  db.orders.count()
+4.  db.orders.find({"EmployeeID" : 8} ).count()
+5.  db.employees.find({"EmployeeID" : 1},{"_id": false, "LastName": true })
+6.  db.orders.distinct("EmployeeID", {"OrderID" : {$lt:10300}})
+7.  db.suppliers.distinct("CompanyName")
+8.  db.suppliers.count()
+9.  db.suppliers.find({"City":"Boston", "Region":"MA"}, {"SupplierID":true, "Phone":true, "_id":false})
+10. db.orders.aggregate([
+      { $group: { _id: "$EmployeeID", total: { $sum: 1 } } },
+      { $sort: { total: -1 }},
+      { $limit: 1 } ])
+11. db.regions.find({"RegionID":2}).count()
+    db.regions.find({"RegionID":2}, {"RegionDescription":true, "_id": false})
+12. db.shippers.distinct("Phone", {"CompanyName":"United Package"})
+
+neo4j
+1.  MATCH (n) RETURN distinct labels(n)
+2.  MATCH (n:Category) RETURN count(n)
+3.  MATCH (n:Order) RETURN count(n)
+4.  MATCH (:Employee {employeeID: '8'})-[:SOLD]->(n:Order) RETURN count(n)
+5.  MATCH (e:Employee {employeeID: '1'}) RETURN e.lastName
+6.  MATCH (o:Order) <-[:SOLD]- (e:Employee) WHERE o.orderID < "10300" RETURN DISTINCT e.employeeID
+7.  MATCH (s:Supplier) RETURN DISTINCT s.companyName
+8.  MATCH (s:Supplier) RETURN count(s)
+9.  MATCH (s:Supplier {city: "Boston", region: "MA"}) RETURN s.supplierID, s.phone
+10. MATCH (e:Employee) -[s:SOLD]-> (o:Order) return e.employeeID, count(s) as n order by n desc limit 1
+11. MATCH (t:Territories) -[:BELONGS_TO]-> (r:Regions) WHERE r.RegionID = "2" RETURN count(t)
+    MATCH (t:Territories) -[:BELONGS_TO]-> (r:Regions) WHERE r.RegionID = "2" RETURN t.TerritoryDescription
+12. MATCH (s:Shippers) WHERE s.CompanyName = "United Package" RETURN s.Phone
